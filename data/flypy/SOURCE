@@ -1,0 +1,4 @@
+repository: https://github.com/cubercsl/rime-flypy.git
+ref: v20251211
+commit: ea9455f25995a2878485c85b111c34a2a897adac
+files: flypy.dict.yaml and enabled import tables

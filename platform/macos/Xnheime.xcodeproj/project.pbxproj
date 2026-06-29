@@ -1,0 +1,445 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A1000012D00000000000001 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2000012D00000000000001 /* main.swift */; };
+		0A1000022D00000000000002 /* XnheimeInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2000022D00000000000002 /* XnheimeInputController.swift */; };
+		0A1000032D00000000000003 /* XnheimeIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0A2000062D00000000000006 /* XnheimeIcon.pdf */; };
+		0A1000042D00000000000004 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A3000012D00000000000001 /* InfoPlist.strings */; };
+		0A1000052D00000000000005 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2000102D00000000000010 /* Cocoa.framework */; };
+		0A1000062D00000000000006 /* InputMethodKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2000112D00000000000011 /* InputMethodKit.framework */; };
+		0A1000072D00000000000007 /* ../../target/release/libxnheime_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2000122D00000000000012 /* ../../target/release/libxnheime_core.a */; };
+		0A1000082D00000000000008 /* IMKSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0AA000012D00000000000001 /* IMKSwift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0A2000012D00000000000001 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		0A2000022D00000000000002 /* XnheimeInputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XnheimeInputController.swift; sourceTree = "<group>"; };
+		0A2000042D00000000000004 /* XnheimeCoreBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XnheimeCoreBridge.h; sourceTree = "<group>"; };
+		0A2000052D00000000000005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A2000062D00000000000006 /* XnheimeIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = XnheimeIcon.pdf; sourceTree = "<group>"; };
+		0A2000072D00000000000007 /* Entitlements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.plist; sourceTree = "<group>"; };
+		0A2000082D00000000000008 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0A2000092D00000000000009 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		0A20000A2D0000000000000A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		0A20000F2D0000000000000F /* Xnheime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Xnheime.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A2000102D00000000000010 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		0A2000112D00000000000011 /* InputMethodKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InputMethodKit.framework; path = System/Library/Frameworks/InputMethodKit.framework; sourceTree = SDKROOT; };
+		0A2000122D00000000000012 /* ../../target/release/libxnheime_core.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = ../../target/release/libxnheime_core.a; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0A4000012D00000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A1000052D00000000000005 /* Cocoa.framework in Frameworks */,
+				0A1000062D00000000000006 /* InputMethodKit.framework in Frameworks */,
+				0A1000072D00000000000007 /* ../../target/release/libxnheime_core.a in Frameworks */,
+				0A1000082D00000000000008 /* IMKSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A5000012D00000000000001 = {
+			isa = PBXGroup;
+			children = (
+				0A5000022D00000000000002 /* Sources */,
+				0A5000032D00000000000003 /* Resources */,
+				0A5000042D00000000000004 /* Frameworks */,
+				0A5000052D00000000000005 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0A5000022D00000000000002 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				0A2000012D00000000000001 /* main.swift */,
+				0A2000022D00000000000002 /* XnheimeInputController.swift */,
+				0A2000042D00000000000004 /* XnheimeCoreBridge.h */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		0A5000032D00000000000003 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0A2000052D00000000000005 /* Info.plist */,
+				0A2000072D00000000000007 /* Entitlements.plist */,
+				0A2000062D00000000000006 /* XnheimeIcon.pdf */,
+				0A3000012D00000000000001 /* InfoPlist.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0A5000042D00000000000004 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0A2000102D00000000000010 /* Cocoa.framework */,
+				0A2000112D00000000000011 /* InputMethodKit.framework */,
+				0A2000122D00000000000012 /* ../../target/release/libxnheime_core.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0A5000052D00000000000005 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0A20000F2D0000000000000F /* Xnheime.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0A6000012D00000000000001 /* Xnheime */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A9000022D00000000000002 /* Build configuration list for PBXNativeTarget "Xnheime" */;
+			buildPhases = (
+				0A7000012D00000000000001 /* Build Rust Core */,
+				0A4000022D00000000000002 /* Sources */,
+				0A4000012D00000000000001 /* Frameworks */,
+				0A4000032D00000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Xnheime;
+			packageProductDependencies = (
+				0AA000012D00000000000001 /* IMKSwift */,
+			);
+			productName = Xnheime;
+			productReference = 0A20000F2D0000000000000F /* Xnheime.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0A8000012D00000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					0A6000012D00000000000001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 0A9000012D00000000000001 /* Build configuration list for PBXProject "Xnheime" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				"zh-Hans",
+				"zh-Hant",
+			);
+			mainGroup = 0A5000012D00000000000001;
+			packageReferences = (
+				0AA000022D00000000000002 /* XCRemoteSwiftPackageReference "IMKSwift" */,
+			);
+			productRefGroup = 0A5000052D00000000000005 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0A6000012D00000000000001 /* Xnheime */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0A4000032D00000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A1000032D00000000000003 /* XnheimeIcon.pdf in Resources */,
+				0A1000042D00000000000004 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A7000012D00000000000001 /* Build Rust Core */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../../crates/xnheime-core/src/lib.rs",
+				"$(SRCROOT)/../../crates/xnheime-core/Cargo.toml",
+				"$(SRCROOT)/../../Cargo.toml",
+				"$(SRCROOT)/../../data/flypy/flypy.dict.yaml",
+			);
+			name = "Build Rust Core";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/../../target/release/libxnheime_core.a",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -euo pipefail\ncd \"$SRCROOT/../..\"\ncargo build --release -p xnheime-core\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0A4000022D00000000000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A1000012D00000000000001 /* main.swift in Sources */,
+				0A1000022D00000000000002 /* XnheimeInputController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0A3000012D00000000000001 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A2000082D00000000000008 /* en */,
+				0A2000092D00000000000009 /* zh-Hans */,
+				0A20000A2D0000000000000A /* zh-Hant */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0AA000022D00000000000002 /* XCRemoteSwiftPackageReference "IMKSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vChewing/IMKSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 26.03.07;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0AA000012D00000000000001 /* IMKSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AA000022D00000000000002 /* XCRemoteSwiftPackageReference "IMKSwift" */;
+			productName = IMKSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0A9000032D00000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMPILER_INDEX_STORE_ENABLE = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SDK_STAT_CACHE_ENABLE = NO;
+			};
+			name = Debug;
+		};
+		0A9000042D00000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COMPILER_INDEX_STORE_ENABLE = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SDK_STAT_CACHE_ENABLE = NO;
+			};
+			name = Release;
+		};
+		0A9000052D00000000000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../target/release",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.uonr.inputmethod.Xnheime;
+				PRODUCT_NAME = Xnheime;
+				SWIFT_OBJC_BRIDGING_HEADER = Sources/XnheimeCoreBridge.h;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0A9000062D00000000000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = arm64;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = Resources/Entitlements.plist;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_APP_SANDBOX = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../../target/release",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.uonr.inputmethod.Xnheime;
+				PRODUCT_NAME = Xnheime;
+				SWIFT_OBJC_BRIDGING_HEADER = Sources/XnheimeCoreBridge.h;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0A9000012D00000000000001 /* Build configuration list for PBXProject "Xnheime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A9000032D00000000000003 /* Debug */,
+				0A9000042D00000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0A9000022D00000000000002 /* Build configuration list for PBXNativeTarget "Xnheime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A9000052D00000000000005 /* Debug */,
+				0A9000062D00000000000006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0A8000012D00000000000001 /* Project object */;
+}
