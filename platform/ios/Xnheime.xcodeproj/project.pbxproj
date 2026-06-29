@@ -1,0 +1,586 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 71;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A001 /* XnheimeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B001 /* XnheimeApp.swift */; };
+		A002 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B002 /* KeyboardViewController.swift */; };
+		A003 /* KeyboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003 /* KeyboardModel.swift */; };
+		A004 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B004 /* KeyboardView.swift */; };
+		A005 /* XnheimeKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B006 /* XnheimeKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A006 /* TextDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B007 /* TextDocument.swift */; };
+		A007 /* KeyboardMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B008 /* KeyboardMetrics.swift */; };
+		A008 /* KeyboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009 /* KeyboardLayout.swift */; };
+		A009 /* KeyCap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B010 /* KeyCap.swift */; };
+		A010 /* CandidateBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B011 /* CandidateBar.swift */; };
+		A020 /* FakeTextDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B012 /* FakeTextDocument.swift */; };
+		A021 /* KeyboardModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B013 /* KeyboardModelTests.swift */; };
+		A022 /* KeyboardLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B014 /* KeyboardLayoutTests.swift */; };
+		A023 /* KeyboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B003 /* KeyboardModel.swift */; };
+		A024 /* TextDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B007 /* TextDocument.swift */; };
+		A025 /* KeyboardMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B008 /* KeyboardMetrics.swift */; };
+		A026 /* KeyboardLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B009 /* KeyboardLayout.swift */; };
+		A027 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B016 /* KeyboardSettings.swift */; };
+		A028 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B016 /* KeyboardSettings.swift */; };
+		A029 /* UserDictionaryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B017 /* UserDictionaryStore.swift */; };
+		A030 /* UserDictionaryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B017 /* UserDictionaryStore.swift */; };
+		A031 /* UserDictionaryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B017 /* UserDictionaryStore.swift */; };
+		A032 /* UserDictionaryImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B020 /* UserDictionaryImporter.swift */; };
+		A033 /* UserDictionaryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B021 /* UserDictionaryManager.swift */; };
+		A034 /* SettingsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B022 /* SettingsViews.swift */; };
+		A035 /* SharedKeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023 /* SharedKeyboardSettings.swift */; };
+		A036 /* SharedKeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023 /* SharedKeyboardSettings.swift */; };
+		A037 /* SharedKeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B023 /* SharedKeyboardSettings.swift */; };
+		A038 /* KeyCap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B010 /* KeyCap.swift */; };
+		A039 /* KeyboardTouchSurfaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B024 /* KeyboardTouchSurfaceTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = P001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = T002;
+			remoteInfo = XnheimeKeyboard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D001 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A005 /* XnheimeKeyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B001 /* XnheimeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XnheimeApp.swift; sourceTree = "<group>"; };
+		B002 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		B003 /* KeyboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardModel.swift; sourceTree = "<group>"; };
+		B004 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		B005 /* Xnheime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Xnheime.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B006 /* XnheimeKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = XnheimeKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B007 /* TextDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDocument.swift; sourceTree = "<group>"; };
+		B008 /* KeyboardMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardMetrics.swift; sourceTree = "<group>"; };
+		B009 /* KeyboardLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayout.swift; sourceTree = "<group>"; };
+		B010 /* KeyCap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCap.swift; sourceTree = "<group>"; };
+		B011 /* CandidateBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateBar.swift; sourceTree = "<group>"; };
+		B012 /* FakeTextDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeTextDocument.swift; sourceTree = "<group>"; };
+		B013 /* KeyboardModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardModelTests.swift; sourceTree = "<group>"; };
+		B014 /* KeyboardLayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutTests.swift; sourceTree = "<group>"; };
+		B015 /* XnheimeKeyboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XnheimeKeyboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B016 /* KeyboardSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardSettings.swift; sourceTree = "<group>"; };
+		B017 /* UserDictionaryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDictionaryStore.swift; sourceTree = "<group>"; };
+		B018 /* Xnheime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Xnheime.entitlements; sourceTree = "<group>"; };
+		B019 /* XnheimeKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XnheimeKeyboard.entitlements; sourceTree = "<group>"; };
+		B020 /* UserDictionaryImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDictionaryImporter.swift; sourceTree = "<group>"; };
+		B021 /* UserDictionaryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDictionaryManager.swift; sourceTree = "<group>"; };
+		B022 /* SettingsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViews.swift; sourceTree = "<group>"; };
+		B023 /* SharedKeyboardSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedKeyboardSettings.swift; sourceTree = "<group>"; };
+		B024 /* KeyboardTouchSurfaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTouchSurfaceTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F003 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		G001 = {
+			isa = PBXGroup;
+			children = (
+				G002 /* App */,
+				G003 /* KeyboardExtension */,
+				G006 /* Shared */,
+				G005 /* KeyboardTests */,
+				G004 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		G002 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B001 /* XnheimeApp.swift */,
+				B020 /* UserDictionaryImporter.swift */,
+				B021 /* UserDictionaryManager.swift */,
+				B022 /* SettingsViews.swift */,
+				B018 /* Xnheime.entitlements */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		G003 /* KeyboardExtension */ = {
+			isa = PBXGroup;
+			children = (
+				B002 /* KeyboardViewController.swift */,
+				B003 /* KeyboardModel.swift */,
+				B004 /* KeyboardView.swift */,
+				B007 /* TextDocument.swift */,
+				B008 /* KeyboardMetrics.swift */,
+				B009 /* KeyboardLayout.swift */,
+				B016 /* KeyboardSettings.swift */,
+				B010 /* KeyCap.swift */,
+				B011 /* CandidateBar.swift */,
+				B019 /* XnheimeKeyboard.entitlements */,
+			);
+			path = KeyboardExtension;
+			sourceTree = "<group>";
+		};
+		G004 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B005 /* Xnheime.app */,
+				B006 /* XnheimeKeyboard.appex */,
+				B015 /* XnheimeKeyboardTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		G005 /* KeyboardTests */ = {
+			isa = PBXGroup;
+			children = (
+				B012 /* FakeTextDocument.swift */,
+				B013 /* KeyboardModelTests.swift */,
+				B014 /* KeyboardLayoutTests.swift */,
+				B024 /* KeyboardTouchSurfaceTests.swift */,
+			);
+			path = KeyboardTests;
+			sourceTree = "<group>";
+		};
+		G006 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				B017 /* UserDictionaryStore.swift */,
+				B023 /* SharedKeyboardSettings.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		T001 /* Xnheime */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = L002 /* Build configuration list for PBXNativeTarget "Xnheime" */;
+			buildPhases = (
+				S001 /* Sources */,
+				F001 /* Frameworks */,
+				R001 /* Resources */,
+				D001 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E001 /* PBXTargetDependency */,
+			);
+			name = Xnheime;
+			productName = Xnheime;
+			productReference = B005 /* Xnheime.app */;
+			productType = "com.apple.product-type.application";
+		};
+		T002 /* XnheimeKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = L003 /* Build configuration list for PBXNativeTarget "XnheimeKeyboard" */;
+			buildPhases = (
+				S002 /* Sources */,
+				F002 /* Frameworks */,
+				R002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XnheimeKeyboard;
+			productName = XnheimeKeyboard;
+			productReference = B006 /* XnheimeKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		T003 /* XnheimeKeyboardTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = L004 /* Build configuration list for PBXNativeTarget "XnheimeKeyboardTests" */;
+			buildPhases = (
+				S003 /* Sources */,
+				F003 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XnheimeKeyboardTests;
+			productName = XnheimeKeyboardTests;
+			productReference = B015 /* XnheimeKeyboardTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		P001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					T001 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					T002 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					T003 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+				};
+			};
+			buildConfigurationList = L001 /* Build configuration list for PBXProject "Xnheime" */;
+			compatibilityVersion = "Xcode 16.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = G001;
+			productRefGroup = G004 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				T001 /* Xnheime */,
+				T002 /* XnheimeKeyboard */,
+				T003 /* XnheimeKeyboardTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		R001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		R002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		S001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A001 /* XnheimeApp.swift in Sources */,
+				A031 /* UserDictionaryStore.swift in Sources */,
+				A032 /* UserDictionaryImporter.swift in Sources */,
+				A033 /* UserDictionaryManager.swift in Sources */,
+				A034 /* SettingsViews.swift in Sources */,
+				A035 /* SharedKeyboardSettings.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		S002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A002 /* KeyboardViewController.swift in Sources */,
+				A003 /* KeyboardModel.swift in Sources */,
+				A004 /* KeyboardView.swift in Sources */,
+				A006 /* TextDocument.swift in Sources */,
+				A007 /* KeyboardMetrics.swift in Sources */,
+				A008 /* KeyboardLayout.swift in Sources */,
+				A027 /* KeyboardSettings.swift in Sources */,
+				A009 /* KeyCap.swift in Sources */,
+				A010 /* CandidateBar.swift in Sources */,
+				A029 /* UserDictionaryStore.swift in Sources */,
+				A036 /* SharedKeyboardSettings.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		S003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A020 /* FakeTextDocument.swift in Sources */,
+				A021 /* KeyboardModelTests.swift in Sources */,
+				A022 /* KeyboardLayoutTests.swift in Sources */,
+				A023 /* KeyboardModel.swift in Sources */,
+				A024 /* TextDocument.swift in Sources */,
+				A025 /* KeyboardMetrics.swift in Sources */,
+				A026 /* KeyboardLayout.swift in Sources */,
+				A028 /* KeyboardSettings.swift in Sources */,
+				A030 /* UserDictionaryStore.swift in Sources */,
+				A037 /* SharedKeyboardSettings.swift in Sources */,
+				A038 /* KeyCap.swift in Sources */,
+				A039 /* KeyboardTouchSurfaceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = T002 /* XnheimeKeyboard */;
+			targetProxy = C001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		Q001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD = "$(TOOLCHAIN_DIR)/usr/bin/clang";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		Q002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD = "$(TOOLCHAIN_DIR)/usr/bin/clang";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		Q003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = App/Xnheime.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R8CGM6R26H;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.uonr.xnheime.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		Q004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = App/Xnheime.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R8CGM6R26H;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.uonr.xnheime.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		Q005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = KeyboardExtension/XnheimeKeyboard.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R8CGM6R26H;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = KeyboardExtension/Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(RUST_OUTPUT_DIR)",
+				);
+				MARKETING_VERSION = 0.1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lXnheimeCore",
+					"-lxnheime_uniffi",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.uonr.xnheime.ios.keyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUST_OUTPUT_DIR = "$(SRCROOT)/../../target/xcode/$(RUST_PLATFORM)/$(CONFIGURATION)";
+				"RUST_PLATFORM[sdk=iphoneos*]" = "ios-device";
+				"RUST_PLATFORM[sdk=iphonesimulator*]" = "ios-simulator";
+				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "$(RUST_OUTPUT_DIR)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		Q006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = KeyboardExtension/XnheimeKeyboard.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R8CGM6R26H;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = KeyboardExtension/Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(RUST_OUTPUT_DIR)",
+				);
+				MARKETING_VERSION = 0.1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lXnheimeCore",
+					"-lxnheime_uniffi",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.uonr.xnheime.ios.keyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUST_OUTPUT_DIR = "$(SRCROOT)/../../target/xcode/$(RUST_PLATFORM)/$(CONFIGURATION)";
+				"RUST_PLATFORM[sdk=iphoneos*]" = "ios-device";
+				"RUST_PLATFORM[sdk=iphonesimulator*]" = "ios-simulator";
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_INCLUDE_PATHS = "$(RUST_OUTPUT_DIR)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		Q007 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(RUST_OUTPUT_DIR)",
+				);
+				MARKETING_VERSION = 0.1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lXnheimeCore",
+					"-lxnheime_uniffi",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.uonr.xnheime.ios.keyboardtests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUST_OUTPUT_DIR = "$(SRCROOT)/../../target/xcode/$(RUST_PLATFORM)/$(CONFIGURATION)";
+				"RUST_PLATFORM[sdk=iphoneos*]" = "ios-device";
+				"RUST_PLATFORM[sdk=iphonesimulator*]" = "ios-simulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_INCLUDE_PATHS = "$(RUST_OUTPUT_DIR)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		Q008 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(RUST_OUTPUT_DIR)",
+				);
+				MARKETING_VERSION = 0.1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-lXnheimeCore",
+					"-lxnheime_uniffi",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.uonr.xnheime.ios.keyboardtests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUST_OUTPUT_DIR = "$(SRCROOT)/../../target/xcode/$(RUST_PLATFORM)/$(CONFIGURATION)";
+				"RUST_PLATFORM[sdk=iphoneos*]" = "ios-device";
+				"RUST_PLATFORM[sdk=iphonesimulator*]" = "ios-simulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_INCLUDE_PATHS = "$(RUST_OUTPUT_DIR)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		L001 /* Build configuration list for PBXProject "Xnheime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				Q001 /* Debug */,
+				Q002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		L002 /* Build configuration list for PBXNativeTarget "Xnheime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				Q003 /* Debug */,
+				Q004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		L003 /* Build configuration list for PBXNativeTarget "XnheimeKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				Q005 /* Debug */,
+				Q006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		L004 /* Build configuration list for PBXNativeTarget "XnheimeKeyboardTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				Q007 /* Debug */,
+				Q008 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = P001 /* Project object */;
+}

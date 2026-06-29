@@ -1,0 +1,8 @@
+/target/
+/result
+/result-*
+.DS_Store
+xcuserdata/
+*.xcuserstate
+.envrc
+tmp/
