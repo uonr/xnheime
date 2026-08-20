@@ -777,9 +777,9 @@ fn is_valid_code_prefix(
     user_dictionary: &UserDictionary,
     dictionary_mode: DictionaryMode,
 ) -> bool {
-    code.len() <= MAXIMUM_CODE_LENGTH
-        && code
-            .expansions()
+    let expansions = code.expansions();
+    (code.len() <= MAXIMUM_CODE_LENGTH || expansions.iter().any(|code| code.starts_with("ok")))
+        && expansions
             .iter()
             .any(|code| is_valid_concrete_prefix(code, user_dictionary, dictionary_mode))
 }

@@ -737,3 +737,15 @@ fn convenience_dispatch_uses_the_session_dictionary_mode() {
         .iter()
         .any(|candidate| candidate.text() == "嶅"));
 }
+
+#[test]
+fn ok_mode_accepts_codes_longer_than_normal_flypy_codes() {
+    let mut session = CompositionSession::new();
+    for text in ["o", "k", "h", "g", "u", "u"] {
+        session.dispatch(Event::InputText { text: text.into() });
+    }
+    assert!(session
+        .candidates()
+        .iter()
+        .any(|candidate| candidate.text() == "丁"));
+}

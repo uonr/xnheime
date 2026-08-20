@@ -59,6 +59,17 @@ fn main() {
         &mut entries,
     );
 
+    // OK mode is an independent component-decomposition lookup entered with
+    // `ok...`; it is available in every dictionary mode and must not leak into
+    // normal reverse lookup results.
+    let mut ok_entries = BTreeMap::<String, Vec<DictionaryCandidate>>::new();
+    parse_tracked_text_dictionary(
+        &dictionary_dir.join("flypy_ok.txt"),
+        RANK_MAIN_TABLE,
+        MODE_EXPERT,
+        &mut ok_entries,
+    );
+
     let mut prefixes = BTreeMap::<String, u8>::new();
     for (code, candidates) in &entries {
         let minimum_mode = candidates
@@ -113,6 +124,12 @@ fn main() {
             generated.push_str(&format!("({code:?}, {minimum_mode}), "));
         }
         generated.push_str("]),\n");
+    }
+    generated.push_str("];\nstatic OK_ENTRIES: &[(&str, &str)] = &[\n");
+    for (code, candidates) in ok_entries {
+        for candidate in candidates {
+            generated.push_str(&format!("    ({code:?}, {:?}),\n", candidate.word));
+        }
     }
     generated.push_str("];\n");
 

@@ -24,6 +24,12 @@ pub(crate) fn lookup_candidates(
         return Vec::new();
     }
 
+    if input.starts_with("ok") {
+        let start = OK_ENTRIES.partition_point(|(code, _)| *code < input);
+        let end = OK_ENTRIES[start..].partition_point(|(code, _)| *code == input) + start;
+        return OK_ENTRIES[start..end].to_vec();
+    }
+
     let start = ENTRIES.partition_point(|(code, _, _)| *code < input);
     let end = ENTRIES[start..].partition_point(|(code, _, _)| *code == input) + start;
     ENTRIES[start..end]
@@ -77,10 +83,16 @@ pub(crate) fn has_code_prefix(input: &str, mode: DictionaryMode) -> bool {
                 *minimum_mode <= mode.level() && code_matches_pattern_prefix(code, input)
             })
     } else {
-        is_flypy_code(input)
-            && PREFIXES
-                .binary_search_by_key(&input, |(prefix, _)| *prefix)
-                .is_ok_and(|index| PREFIXES[index].1 <= mode.level())
+        if !is_flypy_code(input) {
+            return false;
+        }
+        if input.starts_with("ok") {
+            let start = OK_ENTRIES.partition_point(|(code, _)| *code < input);
+            return start < OK_ENTRIES.len() && OK_ENTRIES[start].0.starts_with(input);
+        }
+        PREFIXES
+            .binary_search_by_key(&input, |(prefix, _)| *prefix)
+            .is_ok_and(|index| PREFIXES[index].1 <= mode.level())
     }
 }
 
@@ -184,6 +196,20 @@ mod tests {
         assert!(lookup_candidates("aofe", DictionaryMode::Beginner)
             .iter()
             .any(|(_, word)| *word == "嶅"));
+    }
+
+    #[test]
+    fn looks_up_ok_component_decomposition_in_every_mode() {
+        for mode in [
+            DictionaryMode::Expert,
+            DictionaryMode::Regular,
+            DictionaryMode::Beginner,
+        ] {
+            assert!(has_code_prefix("okhg", mode));
+            assert!(lookup_candidates("okhguu", mode)
+                .iter()
+                .any(|(_, word)| *word == "丁"));
+        }
     }
 
     #[test]
