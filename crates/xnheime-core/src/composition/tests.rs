@@ -1,6 +1,6 @@
 use super::{
     CompositionEffect as Effect, CompositionEvent as Event, CompositionMode, CompositionSession,
-    DispatchContext, CANDIDATES_PER_ROW,
+    DictionaryMode, DispatchContext, CANDIDATES_PER_ROW,
 };
 use chrono::{FixedOffset, TimeZone};
 use compact_str::CompactString;
@@ -15,6 +15,7 @@ fn fixed_time() -> DispatchContext {
             .unwrap(),
         selected_text: None,
         clipboard_text: None,
+        dictionary_mode: DictionaryMode::Expert,
     }
 }
 
@@ -722,4 +723,17 @@ fn a_fifth_merged_key_commits_and_starts_a_new_code() {
     assert!(candidate_codes(&session)
         .iter()
         .any(|(_, code)| code == "n"));
+}
+
+#[test]
+fn convenience_dispatch_uses_the_session_dictionary_mode() {
+    let mut session = CompositionSession::new();
+    session.set_dictionary_mode(DictionaryMode::Beginner);
+    for text in ["a", "o", "f", "e"] {
+        session.dispatch(Event::InputText { text: text.into() });
+    }
+    assert!(session
+        .candidates()
+        .iter()
+        .any(|candidate| candidate.text() == "嶅"));
 }

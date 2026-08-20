@@ -10,3 +10,6 @@ crate-type = ["rlib"]
 [dependencies]
 chrono = { version = "0.4", default-features = false, features = ["clock"] }
 compact_str = "0.9"
+
+[build-dependencies]
+rsmarisa = { version = "0.4.2", default-features = false }

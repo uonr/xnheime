@@ -2,6 +2,7 @@ mod builtin_dictionary;
 mod composition;
 mod user_dictionary;
 
+pub use builtin_dictionary::DictionaryMode;
 pub use composition::{
     CandidateAction, CandidateItem, CompositionEffect, CompositionEvent, CompositionMode,
     CompositionSession,

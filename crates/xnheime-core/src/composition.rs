@@ -4,7 +4,7 @@ mod punctuation;
 #[cfg(test)]
 mod tests;
 
-use crate::{has_code_prefix, UserDictionary, UserDictionaryLoadResult};
+use crate::{has_code_prefix, DictionaryMode, UserDictionary, UserDictionaryLoadResult};
 use candidates::{
     candidate_display_effects, candidates_for_buffer, inline_candidate_display_effects,
     is_addable_code,
@@ -200,6 +200,7 @@ struct DispatchContext {
     now: DateTime<FixedOffset>,
     selected_text: Option<String>,
     clipboard_text: Option<String>,
+    dictionary_mode: DictionaryMode,
 }
 
 impl DispatchContext {
@@ -208,22 +209,16 @@ impl DispatchContext {
             now: Local::now().fixed_offset(),
             selected_text: None,
             clipboard_text: None,
+            dictionary_mode: DictionaryMode::Expert,
         }
     }
 }
 
+#[derive(Default)]
 pub struct CompositionSession {
     state: CompositionState,
     user_dictionary: UserDictionary,
-}
-
-impl Default for CompositionSession {
-    fn default() -> Self {
-        Self {
-            state: CompositionState::default(),
-            user_dictionary: UserDictionary::default(),
-        }
-    }
+    dictionary_mode: DictionaryMode,
 }
 
 impl CompositionSession {
@@ -239,6 +234,18 @@ impl CompositionSession {
             },
             Mode::Inline(_) => CompositionMode::Inline,
         }
+    }
+
+    pub fn dictionary_mode(&self) -> DictionaryMode {
+        self.dictionary_mode
+    }
+
+    pub fn set_dictionary_mode(&mut self, mode: DictionaryMode) {
+        if mode == self.dictionary_mode {
+            return;
+        }
+        self.dictionary_mode = mode;
+        self.state.mode = Mode::Idle;
     }
 
     pub fn candidates(&self) -> Vec<CandidateItem> {
@@ -280,7 +287,9 @@ impl CompositionSession {
     }
 
     pub fn dispatch(&mut self, event: CompositionEvent) -> Vec<CompositionEffect> {
-        self.dispatch_with_context(event, &DispatchContext::now())
+        let mut context = DispatchContext::now();
+        context.dictionary_mode = self.dictionary_mode;
+        self.dispatch_with_context(event, &context)
     }
 
     pub fn dispatch_with_external_text(
@@ -292,6 +301,7 @@ impl CompositionSession {
         let mut context = DispatchContext::now();
         context.selected_text = selected_text;
         context.clipboard_text = clipboard_text;
+        context.dictionary_mode = self.dictionary_mode;
         self.dispatch_with_context(event, &context)
     }
 
@@ -514,7 +524,7 @@ fn extend_code_weighted(
         Mode::Idle | Mode::Inline(_) => CodeBuffer::new(),
     };
     code.push_weighted(letters, primary_weight);
-    if is_valid_code_prefix(&code, user_dictionary) {
+    if is_valid_code_prefix(&code, user_dictionary, context.dictionary_mode) {
         return begin_conversion(state, code, context, user_dictionary);
     }
     if matches!(&state.mode, Mode::Converting(conversion) if {
@@ -570,7 +580,7 @@ fn delete_backward(
             ],
         );
     }
-    if is_valid_code_prefix(&buffer, user_dictionary) {
+    if is_valid_code_prefix(&buffer, user_dictionary, context.dictionary_mode) {
         begin_conversion(state, buffer, context, user_dictionary)
     } else {
         let text = CompactString::new(buffer.primary());
@@ -762,16 +772,24 @@ fn candidate_selection_index(
     (index < candidate_count).then_some(index)
 }
 
-fn is_valid_code_prefix(code: &CodeBuffer, user_dictionary: &UserDictionary) -> bool {
+fn is_valid_code_prefix(
+    code: &CodeBuffer,
+    user_dictionary: &UserDictionary,
+    dictionary_mode: DictionaryMode,
+) -> bool {
     code.len() <= MAXIMUM_CODE_LENGTH
         && code
             .expansions()
             .iter()
-            .any(|code| is_valid_concrete_prefix(code, user_dictionary))
+            .any(|code| is_valid_concrete_prefix(code, user_dictionary, dictionary_mode))
 }
 
-fn is_valid_concrete_prefix(code: &str, user_dictionary: &UserDictionary) -> bool {
-    has_code_prefix(code)
+fn is_valid_concrete_prefix(
+    code: &str,
+    user_dictionary: &UserDictionary,
+    dictionary_mode: DictionaryMode,
+) -> bool {
+    has_code_prefix(code, dictionary_mode)
         || user_dictionary.has_prefix(code)
         || [";", ";f", "o", "of", "ofi", "or", "orq", "ou", "ouj"]
             .iter()

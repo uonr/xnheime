@@ -27,6 +27,7 @@ private struct ContentView: View {
                         .lineLimit(4...8)
                         .focused($sampleFocused)
                 }
+                DictionaryModeSettingsView()
                 UserDictionarySettingsView()
                 KeyboardFeedbackSettingsView()
             }

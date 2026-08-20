@@ -28,6 +28,7 @@ final class KeyboardModel: ObservableObject {
     private var dictionaryLoadGeneration = 0
     private var pendingDictionarySession: CompositionSession?
     private var composing = false
+    private var dictionaryMode: SharedDictionaryMode?
     let candidateState = KeyboardCandidateState()
 
     var preedit: String { candidateState.preedit }
@@ -38,6 +39,22 @@ final class KeyboardModel: ObservableObject {
         self.document = document
         self.settings = settings
         letterLayout = settings.letterLayout
+        setDictionaryMode(SharedKeyboardSettings.dictionaryMode)
+    }
+
+    func setDictionaryMode(_ mode: SharedDictionaryMode) {
+        guard mode != dictionaryMode else { return }
+        dictionaryMode = mode
+        let coreMode: DictionaryMode = switch mode {
+        case .expert: .expert
+        case .regular: .regular
+        case .beginner: .beginner
+        }
+        reducer.setDictionaryMode(mode: coreMode)
+        selectedTextSnapshot = nil
+        composing = false
+        candidateState.setPreedit("")
+        candidateState.resetCandidates()
     }
 
     /// Parses a new dictionary in an isolated Core session, so opening the keyboard

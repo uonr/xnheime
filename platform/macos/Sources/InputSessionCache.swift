@@ -6,6 +6,44 @@ enum InputSessionCache {
     private static let capacity = 5
     private static var keys: [Int] = []
     private static var values: [InputSession] = []
+    private static let dictionaryModeURL = UserDictionaryStore.directory
+        .appendingPathComponent("dictionary-mode.txt")
+    private static var currentDictionaryMode = loadDictionaryMode()
+
+    static var dictionaryMode: DictionaryMode {
+        get { currentDictionaryMode }
+        set {
+            guard newValue != currentDictionaryMode else { return }
+            let value = switch newValue {
+            case .expert: "expert"
+            case .regular: "regular"
+            case .beginner: "beginner"
+            }
+            currentDictionaryMode = newValue
+            do {
+                try (value + "\n").write(
+                    to: dictionaryModeURL,
+                    atomically: true,
+                    encoding: .utf8
+                )
+            } catch {
+                NSLog("Xnheime: failed to save dictionary mode: %@", error.localizedDescription)
+            }
+            for session in values {
+                session.setDictionaryMode(newValue)
+            }
+        }
+    }
+
+    private static func loadDictionaryMode() -> DictionaryMode {
+        let value = try? String(contentsOf: dictionaryModeURL, encoding: .utf8)
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        return switch value {
+        case "regular": .regular
+        case "beginner": .beginner
+        default: .expert
+        }
+    }
 
     static func session(for client: any IMKTextInput) -> InputSession {
         let address = Int(bitPattern: Unmanaged.passUnretained(client as AnyObject).toOpaque())

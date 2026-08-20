@@ -5,7 +5,7 @@ use super::{
 };
 use crate::{
     lookup_candidates, lookup_candidates_matching, lookup_codes_for_character, DictionaryLayer,
-    UserDictionary,
+    DictionaryMode, UserDictionary,
 };
 use compact_str::{format_compact, CompactString};
 use std::cmp::Ordering;
@@ -126,22 +126,29 @@ fn candidates_for(
     if let Some(dynamic) = dynamic {
         return dynamic
             .into_iter()
-            .map(|text| CandidateItem::Candidate {
-                text: text.into(),
-                code: None,
-            })
+            .map(|text| CandidateItem::Candidate { text, code: None })
             .collect();
     }
     if input == "ofi" {
-        let selected_candidates =
-            reverse_lookup_candidates(context.selected_text.as_deref(), user_dictionary);
+        let selected_candidates = reverse_lookup_candidates(
+            context.selected_text.as_deref(),
+            user_dictionary,
+            context.dictionary_mode,
+        );
         if !selected_candidates.is_empty() {
             return selected_candidates;
         }
-        let clipboard_candidates =
-            reverse_lookup_candidates(context.clipboard_text.as_deref(), user_dictionary);
+        let clipboard_candidates = reverse_lookup_candidates(
+            context.clipboard_text.as_deref(),
+            user_dictionary,
+            context.dictionary_mode,
+        );
         return if clipboard_candidates.is_empty() {
-            reverse_lookup_candidates(last_committed_text, user_dictionary)
+            reverse_lookup_candidates(
+                last_committed_text,
+                user_dictionary,
+                context.dictionary_mode,
+            )
         } else {
             clipboard_candidates
         };
@@ -158,7 +165,7 @@ fn candidates_for(
                 });
             }
         }
-        for (code, text) in lookup_candidates_matching(input) {
+        for (code, text) in lookup_candidates_matching(input, context.dictionary_mode) {
             if seen.insert(text) {
                 candidates.push(CandidateItem::Candidate {
                     text: CompactString::const_new(text),
@@ -188,8 +195,8 @@ fn candidates_for(
                 });
             }
         }
-        for (_, text) in lookup_candidates(input) {
-            if seen.insert(*text) {
+        for (_, text) in lookup_candidates(input, context.dictionary_mode) {
+            if seen.insert(text) {
                 candidates.push(CandidateItem::Candidate {
                     text: CompactString::const_new(text),
                     code: None,
@@ -211,12 +218,13 @@ fn candidates_for(
 pub(super) fn reverse_lookup_candidates(
     text: Option<&str>,
     user_dictionary: &UserDictionary,
+    dictionary_mode: DictionaryMode,
 ) -> Vec<CandidateItem> {
     let mut candidates = Vec::new();
     for character in text.unwrap_or_default().chars() {
         let mut push_candidate = |code: CompactString| {
             let candidate = CandidateItem::Candidate {
-                text: format_compact!("{character}").into(),
+                text: format_compact!("{character}"),
                 code: Some(code),
             };
             if !candidates.contains(&candidate) {
@@ -226,7 +234,7 @@ pub(super) fn reverse_lookup_candidates(
         for code in user_dictionary.codes_for_character(character, DictionaryLayer::BeforeSystem) {
             push_candidate(code.clone());
         }
-        for code in lookup_codes_for_character(character) {
+        for code in lookup_codes_for_character(character, dictionary_mode) {
             push_candidate(CompactString::const_new(code));
         }
         for code in user_dictionary.codes_for_character(character, DictionaryLayer::AfterSystem) {

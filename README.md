@@ -5,26 +5,32 @@
 ## Layout
 
 - `crates/xnheime-core`: shared Rust input engine crate.
-- `data/flypy`: vendored 小鹤音形 Rime 码表快照。
+- `data/flypy`: 从小鹤音形 Rime 数据目录导入的码表快照。
 - `platform/macos`: macOS 14+ Swift frontend.
 - `platform/ios`: iOS 17+ container app and custom keyboard extension.
 - `flake.nix`: optional reproducible development shell and macOS command wrappers.
 
 ## Dictionary data
 
-This repository vendors a minimal snapshot from `cubercsl/rime-flypy` instead
-of using a git submodule or Nix flake input. That keeps the dictionary available
-to plain Cargo/Xcode builds without requiring network access during normal
-builds.
+This repository vendors the public files from the Flypy Rime distribution in
+their original formats. The Rust build reads the compiled `Rime::Table/4.0`
+main table directly, including its embedded Marisa trie, and reads the
+supplemental text tables without an intermediate conversion step.
 
-The snapshot source is recorded in `data/flypy/SOURCE`. Refresh it with:
+The local source and the included/excluded tables are recorded in
+`data/flypy/SOURCE`. Refresh the snapshot by copying the corresponding original
+files from a Rime user data directory.
 
 ```sh
-python3 scripts/update_flypy.py
+cp /path/to/rime/build/flypy.table.bin data/flypy/
+cp /path/to/rime/flypy_{top,sys}.txt data/flypy/
+cp /path/to/rime/{模式切换\&补充简码方案,flypy_full全码字}.txt data/flypy/
 ```
 
-The Rust core reads the enabled import tables from the vendored snapshot at compile
-time and embeds them into the static library.
+The Rust core provides the distribution's three four-key modes: expert uses the
+main tables, regular adds full-code words, and beginner also adds full-code
+characters. Their before/after-system priorities follow the source mode file.
+The separate six/eight-key `ok` mode is not mixed into four-key candidates.
 
 ## macOS smoke test
 

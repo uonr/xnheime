@@ -1,6 +1,24 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
+struct DictionaryModeSettingsView: View {
+    @State private var mode = SharedKeyboardSettings.dictionaryMode
+
+    var body: some View {
+        Section("输入模式") {
+            Picker("码表", selection: $mode) {
+                ForEach(SharedDictionaryMode.allCases) { mode in
+                    Text(mode.title).tag(mode)
+                }
+            }
+            .pickerStyle(.segmented)
+        }
+        .onChange(of: mode) { _, value in
+            SharedKeyboardSettings.dictionaryMode = value
+        }
+    }
+}
+
 struct UserDictionarySettingsView: View {
     @StateObject private var manager = UserDictionaryManager()
     @State private var importsFile = false

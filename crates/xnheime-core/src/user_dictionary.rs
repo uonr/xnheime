@@ -190,7 +190,7 @@ impl UserDictionary {
             .values_mut()
             .chain(self.after_system.values_mut())
         {
-            entries.sort_by(|left, right| compare_entries(left, right));
+            entries.sort_by(compare_entries);
         }
         for code in self.before_system.keys().chain(self.after_system.keys()) {
             for index in 1..=code.len() {

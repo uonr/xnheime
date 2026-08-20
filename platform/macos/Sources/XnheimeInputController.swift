@@ -1,9 +1,18 @@
 import AppKit
 import IMKSwift
+import XnheimeCore
 
 @objc(XnheimeInputController)
 @MainActor
 public final class XnheimeInputController: IMKInputSessionController {
+    private enum MenuCommand: Int {
+        case expertMode = 100
+        case regularMode
+        case beginnerMode
+        case reloadUserDictionary = 200
+        case openUserDictionaryDirectory
+    }
+
     private weak var session: InputSession?
     private var pendingShiftTap: KeyboardShift?
 
@@ -76,27 +85,61 @@ public final class XnheimeInputController: IMKInputSessionController {
 
     override public func menu() -> NSMenu? {
         let menu = NSMenu(title: "Xnheime")
+        for (title, mode, command) in [
+            ("模式：熟手", DictionaryMode.expert, MenuCommand.expertMode),
+            ("模式：常规", DictionaryMode.regular, MenuCommand.regularMode),
+            ("模式：初学", DictionaryMode.beginner, MenuCommand.beginnerMode),
+        ] {
+            let item = NSMenuItem(
+                title: title,
+                action: #selector(menuCommand(_:)),
+                keyEquivalent: ""
+            )
+            item.tag = command.rawValue
+            item.state = mode == InputSessionCache.dictionaryMode ? .on : .off
+            menu.addItem(item)
+        }
+        menu.addItem(.separator())
+
         let reload = NSMenuItem(
             title: "重新加载用户码表",
-            action: #selector(reloadUserDictionary(_:)),
+            action: #selector(menuCommand(_:)),
             keyEquivalent: ""
         )
-        reload.target = self
+        reload.tag = MenuCommand.reloadUserDictionary.rawValue
         menu.addItem(reload)
 
         let open = NSMenuItem(
             title: "打开用户码表文件夹…",
-            action: #selector(openUserDictionaryDirectory(_:)),
+            action: #selector(menuCommand(_:)),
             keyEquivalent: ""
         )
-        open.target = self
+        open.tag = MenuCommand.openUserDictionaryDirectory.rawValue
         menu.addItem(open)
         return menu
     }
 
-    @objc private func reloadUserDictionary(_: NSMenuItem) {
+    @objc private func menuCommand(_ item: NSMenuItem) {
+        guard let command = MenuCommand(rawValue: item.tag) else { return }
+        switch command {
+        case .expertMode, .regularMode, .beginnerMode:
+            let mode: DictionaryMode = switch command {
+            case .regularMode: .regular
+            case .beginnerMode: .beginner
+            default: .expert
+            }
+            InputSessionCache.dictionaryMode = mode
+            NSLog("Xnheime: switched dictionary mode to %@", item.title)
+        case .reloadUserDictionary:
+            reloadUserDictionary()
+        case .openUserDictionaryDirectory:
+            NSWorkspace.shared.open(UserDictionaryStore.directory)
+        }
+    }
+
+    private func reloadUserDictionary() {
         let result = InputSessionCache.reloadUserDictionaries()
-            ?? activeSessionForMenu().reloadUserDictionary()
+            ?? InputSession().reloadUserDictionary()
         if let error = result.error {
             NSLog("Xnheime: failed to reload user dictionaries: %@", error)
         } else {
@@ -109,10 +152,6 @@ public final class XnheimeInputController: IMKInputSessionController {
         }
     }
 
-    @objc private func openUserDictionaryDirectory(_: NSMenuItem) {
-        NSWorkspace.shared.open(UserDictionaryStore.directory)
-    }
-
     @MainActor
     private func activeSession(for sender: any IMKTextInput) -> InputSession {
         if let session {
@@ -122,13 +161,6 @@ public final class XnheimeInputController: IMKInputSessionController {
         let restored = InputSessionCache.session(for: sender)
         session = restored
         return restored
-    }
-
-    private func activeSessionForMenu() -> InputSession {
-        if let session { return session }
-        let created = InputSession()
-        session = created
-        return created
     }
 
     private func handle(_ action: KeyboardInputAction, client sender: any IMKTextInput) -> Bool {

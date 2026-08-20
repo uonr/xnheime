@@ -12,7 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PROJECT = ROOT / "platform/macos/Xnheime.xcodeproj"
 APP_NAME = "Xnheime.app"
-FLYPY_SENTINEL = ROOT / "data/flypy/flypy.dict.yaml"
+FLYPY_SENTINEL = ROOT / "data/flypy/flypy.table.bin"
 RUST_CORE_BUILD_SCRIPT = ROOT / "scripts/build_rust_core.sh"
 
 
@@ -132,7 +132,7 @@ def ensure_dictionary_data():
         return
 
     print(f"error: missing vendored dictionary data: {FLYPY_SENTINEL}", file=sys.stderr)
-    print("run scripts/update_flypy.py to refresh the dictionary snapshot", file=sys.stderr)
+    print("copy the original Rime Flypy tables into data/flypy", file=sys.stderr)
     sys.exit(1)
 
 

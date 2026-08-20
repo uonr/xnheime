@@ -5,10 +5,27 @@ struct KeyboardFeedbackConfiguration: Equatable, Sendable {
     var strength: Double
 }
 
+enum SharedDictionaryMode: String, CaseIterable, Identifiable {
+    case expert
+    case regular
+    case beginner
+
+    var id: Self { self }
+
+    var title: String {
+        switch self {
+        case .expert: "熟手模式"
+        case .regular: "常规模式"
+        case .beginner: "初学模式"
+        }
+    }
+}
+
 @MainActor
 enum SharedKeyboardSettings {
     private static let soundKey = "keyboardFeedbackSound"
     private static let strengthKey = "keyboardFeedbackStrength"
+    private static let dictionaryModeKey = "dictionaryMode"
     private static let defaults = UserDefaults(
         suiteName: UserDictionaryStore.groupIdentifier
     )
@@ -23,6 +40,16 @@ enum SharedKeyboardSettings {
         set {
             defaults?.set(newValue.soundEnabled, forKey: soundKey)
             defaults?.set(min(max(newValue.strength, 0), 1), forKey: strengthKey)
+        }
+    }
+
+    static var dictionaryMode: SharedDictionaryMode {
+        get {
+            defaults?.string(forKey: dictionaryModeKey)
+                .flatMap(SharedDictionaryMode.init(rawValue:)) ?? .expert
+        }
+        set {
+            defaults?.set(newValue.rawValue, forKey: dictionaryModeKey)
         }
     }
 

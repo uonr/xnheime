@@ -2,7 +2,15 @@ use std::sync::{Arc, Mutex};
 use xnheime_core::{
     CandidateItem as CoreCandidateItem, CompositionEffect as CoreEffect,
     CompositionEvent as CoreEvent, CompositionMode as CoreMode, CompositionSession as CoreSession,
+    DictionaryMode as CoreDictionaryMode,
 };
+
+#[derive(Clone, Copy, Debug, Eq, PartialEq, uniffi::Enum)]
+pub enum DictionaryMode {
+    Expert,
+    Regular,
+    Beginner,
+}
 
 #[derive(Clone, Debug, Eq, PartialEq, uniffi::Enum)]
 pub enum CandidateAction {
@@ -119,6 +127,21 @@ impl CompositionSession {
             .expect("composition session lock poisoned")
             .mode()
             .into()
+    }
+
+    pub fn dictionary_mode(&self) -> DictionaryMode {
+        self.inner
+            .lock()
+            .expect("composition session lock poisoned")
+            .dictionary_mode()
+            .into()
+    }
+
+    pub fn set_dictionary_mode(&self, mode: DictionaryMode) {
+        self.inner
+            .lock()
+            .expect("composition session lock poisoned")
+            .set_dictionary_mode(mode.into());
     }
 
     pub fn candidates(&self) -> Vec<CandidateItem> {
@@ -344,6 +367,26 @@ impl From<CoreMode> for CompositionMode {
             CoreMode::Idle => Self::Idle,
             CoreMode::Converting { candidate_count } => Self::Converting { candidate_count },
             CoreMode::Inline => Self::Inline,
+        }
+    }
+}
+
+impl From<CoreDictionaryMode> for DictionaryMode {
+    fn from(mode: CoreDictionaryMode) -> Self {
+        match mode {
+            CoreDictionaryMode::Expert => Self::Expert,
+            CoreDictionaryMode::Regular => Self::Regular,
+            CoreDictionaryMode::Beginner => Self::Beginner,
+        }
+    }
+}
+
+impl From<DictionaryMode> for CoreDictionaryMode {
+    fn from(mode: DictionaryMode) -> Self {
+        match mode {
+            DictionaryMode::Expert => Self::Expert,
+            DictionaryMode::Regular => Self::Regular,
+            DictionaryMode::Beginner => Self::Beginner,
         }
     }
 }

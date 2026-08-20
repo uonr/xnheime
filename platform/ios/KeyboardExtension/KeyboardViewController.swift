@@ -73,6 +73,7 @@ final class KeyboardViewController: UIInputViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         feedbackConfiguration = SharedKeyboardSettings.feedback
+        model.setDictionaryMode(SharedKeyboardSettings.dictionaryMode)
         loadUserDictionary()
     }
 

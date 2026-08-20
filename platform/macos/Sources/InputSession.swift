@@ -8,7 +8,14 @@ final class InputSession {
     private var selectedTextSnapshot: String?
 
     init() {
+        reducer.setDictionaryMode(mode: InputSessionCache.dictionaryMode)
         reloadUserDictionary()
+    }
+
+    func setDictionaryMode(_ mode: DictionaryMode) {
+        reducer.setDictionaryMode(mode: mode)
+        selectedTextSnapshot = nil
+        CandidatePanel.shared.hide()
     }
 
     @discardableResult
@@ -152,4 +159,3 @@ final class InputSession {
         NSRange(location: NSNotFound, length: NSNotFound)
     }
 }
-
