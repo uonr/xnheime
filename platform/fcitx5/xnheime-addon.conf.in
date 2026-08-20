@@ -1,0 +1,13 @@
+[Addon]
+Name=Xnheime
+Name[zh_CN]=萧何输入法
+Name[zh_TW]=蕭何輸入法
+Category=InputMethod
+Version=@PROJECT_VERSION@
+Library=xnheime
+Type=SharedLibrary
+OnDemand=True
+Configurable=True
+
+[Addon/OptionalDependencies]
+0=clipboard

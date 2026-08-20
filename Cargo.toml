@@ -1,6 +1,8 @@
 [workspace]
 members = [
     "crates/xnheime-core",
+    "crates/xnheime-cxx",
+    "crates/xnheime-dict-editor",
     "crates/xnheime-uniffi",
 ]
 resolver = "2"

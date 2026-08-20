@@ -1,0 +1,15 @@
+[package]
+name = "xnheime-cxx"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+
+[lib]
+crate-type = ["staticlib"]
+
+[dependencies]
+cxx = "1.0"
+xnheime-core = { path = "../xnheime-core" }
+
+[build-dependencies]
+cxx-build = "1.0"

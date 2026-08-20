@@ -5,9 +5,11 @@
 ## Layout
 
 - `crates/xnheime-core`: shared Rust input engine crate.
+- `crates/xnheime-cxx`: generated CXX bridge for native C++ frontends.
 - `data/flypy`: 从小鹤音形 Rime 数据目录导入的码表快照。
 - `platform/macos`: macOS 14+ Swift frontend.
 - `platform/ios`: iOS 17+ container app and custom keyboard extension.
+- `platform/fcitx5`: Linux/FreeBSD fcitx5 C++ addon.
 - `flake.nix`: optional reproducible development shell and macOS command wrappers.
 
 ## Dictionary data
@@ -107,6 +109,76 @@ killall TextInputMenuAgent
 ```
 
 Then enable `萧何输入法` in macOS Keyboard input source settings.
+
+## fcitx5
+
+The fcitx5 frontend is a native C++17 addon. It keeps one composition session
+per fcitx input context and links the shared Rust engine through a generated
+CXX bridge, so dictionary and punctuation behavior stay identical across
+platforms.
+
+Install the fcitx5 and GTK4 development files, CMake, Ninja, a C++ compiler and
+Rust, then build and install the addon:
+
+```sh
+cmake -S platform/fcitx5 -B target/fcitx5 -G Ninja \
+  -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+cmake --build target/fcitx5
+sudo cmake --install target/fcitx5
+```
+
+With Nix, the same dependencies are available in the repository shell:
+
+```sh
+nix develop
+cmake -S platform/fcitx5 -B target/fcitx5 -G Ninja
+cmake --build target/fcitx5
+ctest --test-dir target/fcitx5 --output-on-failure
+```
+
+Build the installable Fcitx addon package directly from the flake:
+
+```sh
+nix build
+```
+
+On NixOS, add the flake package alongside the other Fcitx addons:
+
+```nix
+{
+  inputs.xnheime = {
+    url = "github:uonr/xnheime";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  outputs = { nixpkgs, xnheime, ... }: {
+    nixosConfigurations.my-host = nixpkgs.lib.nixosSystem {
+      modules = [{ pkgs, ... }: {
+        i18n.inputMethod.fcitx5.addons = [
+          xnheime.packages.${pkgs.system}.default
+        ];
+      }];
+    };
+  };
+}
+```
+
+The Rust bridge follows a Debug CMake build automatically. Override it with
+`-DXNHEIME_CARGO_PROFILE=debug` or `release`.
+
+Restart fcitx5 (`fcitx5 -rd`), then add “萧何输入法” in fcitx5-configtool.
+User dictionary files are loaded from `$XDG_DATA_HOME/xnheime` (normally
+`~/.local/share/xnheime`); the existing `xnhe.txt` format is supported. Choose
+the `+` candidate to open the GTK4 user-entry editor. Saved entries are detected
+and loaded automatically on the next input.
+
+For a temporary development install that does not write to system directories:
+
+```sh
+scripts/try_fcitx5.sh
+# Later, restart the normal daemon without the development addon:
+scripts/try_fcitx5.sh restore
+```
 
 ## iOS Simulator
 
